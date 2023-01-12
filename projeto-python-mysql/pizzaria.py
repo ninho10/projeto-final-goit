@@ -1,3 +1,6 @@
+import getpass
+import os
+
 
 def pizzaria():
     print('================================================================')
@@ -5,21 +8,29 @@ def pizzaria():
     print('================================================================')
 
 
+print('####################################################################')
+
 pizzaria()
 
 nome = input('Qual é seu nome --> ')
 print('')
-print(f'{nome} vamos criar usuario e senha ')
+print(f'{nome} vamos criar usuario e senha ? ')
 print('================================================================')
+os.system('cls')
 
+usuario = input(f'{nome} escolha seu nome de usuario --> ')
+criarSenha = getpass.getpass('Escolha sua senha --> ')
+print('================================================================')
+os.system('cls')
 
-usuario = input('Escolha seu nome de usuario --> ')
-criarSenha = input('Escolha sua senha --> ')
+print(f'{nome} parabéns..  *usuario e senha criados*')
+print('Sua senha e particular não passe para ninguém')
+print('')
 print('================================================================')
 
 while True:
     nomeUsuario = input('Qual e seu nome de usuario? --> ')
-    senha = input('Qual e sua senha? --> ')
+    senha = getpass.getpass("Digite sua senha: ")
 
     if (usuario != nomeUsuario) or (criarSenha != senha):
         print('tente novamente Usuario ou senha errado...')
@@ -29,7 +40,7 @@ while True:
         print('senha correta')
         break
 
-
+os.system('cls')
 pizzaria()
 
-print('APP PIZZA GO-IT')
+print('        *CARDÁPIO DIGITAL PIZZARIO GO-IT*')
