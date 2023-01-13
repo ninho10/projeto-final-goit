@@ -1,5 +1,6 @@
-import getpass
+# import getpass
 import os
+
 
 
 def pizzaria():
@@ -12,14 +13,14 @@ print('####################################################################')
 
 pizzaria()
 
-nome = input('Qual é seu nome --> ')
+nome = input('Qual é seu fucionario --> ')
 print('')
-print(f'{nome} vamos criar usuario e senha ? ')
+print(f'fucionario {nome} vamos criar usuario e senha ? ')
 print('================================================================')
 os.system('cls')
 
-usuario = input(f'{nome} escolha seu nome de usuario --> ')
-criarSenha = getpass.getpass('Escolha sua senha --> ')
+usuario = input(f'fucionario {nome} escolha seu nome de usuario --> ')
+criarSenha = input('Escolha sua senha --> ')
 print('================================================================')
 os.system('cls')
 
@@ -30,7 +31,7 @@ print('================================================================')
 
 while True:
     nomeUsuario = input('Qual e seu nome de usuario? --> ')
-    senha = getpass.getpass("Digite sua senha: ")
+    senha = input("Digite sua senha: ")
 
     if (usuario != nomeUsuario) or (criarSenha != senha):
         print('tente novamente Usuario ou senha errado...')
