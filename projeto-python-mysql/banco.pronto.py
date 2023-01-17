@@ -1,7 +1,7 @@
 import mysql.connector
-import pizzaria1
 
-fucionario1 = Funcionario(usuario, senha)
+
+print('Meus bancos de Dados')
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -12,10 +12,68 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sql = "INSERT INTO funcionario (id, usuario, senha) VALUES (0, %s, %s)"
-val = (fucionario1.usuario, fucionario1.senha)
-mycursor.execute(sql, val)
+mycursor.execute("SHOW TABLES")
 
-mydb.commit()
+for x in mycursor:
+    print(x)
 
-print(mycursor.rowcount, "record inserted.")
+print('====================================================================')
+
+print('Minha tabela funcionario')
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="pizzaria"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM funcionario")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+    print(x)
+
+
+print('====================================================================')
+
+print('Minha tabela cliente')
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="pizzaria"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM cliente")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+    print(x)
+
+print('====================================================================')
+
+print('Minha tabela pedido')
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="pizzaria"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM pedido")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+    print(x)

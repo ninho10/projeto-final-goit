@@ -15,44 +15,35 @@ class Funcionario:
 
 
 pizzaria()
-funcionario = input('FUCIONARIO VOCÊ TEM USUARIO (S) SIM OU (N) NÃO --> ')
+
+print('SEJA BEM VINDO FUNCIONARIO...')
+print('FUNCIONARIO DIGITE SEU USUARIO É SENHA')
+print('')
+usuario = input('DIGITE NOME DE USUARIO --> ')
+os.system('cls')
+pizzaria()
+senha = input('DIGITE SUA SENHA --> ')
 
 
-if funcionario == 'n':
-    print('SEJA BEM VINDO FUNCIONARIO...')
-    print('FUMCIONARIO VAMOS CRIAR USUARIO E SENHA')
-    usuario = input('CRIER SEU USUARIO --> ')
-    os.system('cls')
-    pizzaria()
-    senha = input('CRIER SUA SENHA --> ')
+fucionario1 = Funcionario(usuario, senha)
 
-    fucionario1 = Funcionario(usuario, senha)
+# MYSQL funcionario
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="pizzaria"
+)
 
-    # MYSQL funcionario
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="pizzaria"
-    )
+mycursor = mydb.cursor()
 
-    mycursor = mydb.cursor()
+sql = "INSERT IGNORE INTO funcionario (usuario, senha) VALUES ( %s, %s)"
+val = (fucionario1.usuario, fucionario1.senha)
+mycursor.execute(sql, val)
 
-    sql = "INSERT INTO funcionario (id, usuario, senha) VALUES (0, %s, %s)"
-    val = (fucionario1.usuario, fucionario1.senha)
-    mycursor.execute(sql, val)
+mydb.commit()
 
-    mydb.commit()
-
-    print(mycursor.rowcount, "record inserted.")
-
-
-if funcionario == 's':
-    usuarioCadastrado = input('DIGITE SEU USUARIO --> ')
-    os.system('cls')
-    pizzaria()
-    senhaCadastrada = input('DIGITE SUA SENHA --> ')
-
+print(mycursor.rowcount, "record inserted.")
 
 # ==================================================================================================
 
@@ -101,9 +92,9 @@ print('        *CARDÁPIO DIGITAL PIZZARIO GO-IT*')
 print('==================================================')
 print('  pizzas       valor             Refrigerentes    ')
 print('')
-print('  Musarela     30.00               coca cola      ')
-print('  calabresa    30.00               Fanta uva      ')
-print('  portuguesa   30.00               Fanta Larranja ')
+print('  musarela     30.00               coca cola      ')
+print('  calabresa    30.00               fanta uva      ')
+print('  portuguesa   30.00               fanta larranja ')
 print('==================================================')
 
 
@@ -125,7 +116,7 @@ os.system('cls')
 pizzaria()
 
 print(
-    f'O pedido do {cliente.nome} ficou uma pizza {pedido.pizza} é um refrigerante {pedido.refrigerante}')
+    f'Cliente {cliente.nome} ficou uma pizza {pedido.pizza} é um refrigerante {pedido.refrigerante}')
 print(f'total apagar {pedido.valor}')
 
 
