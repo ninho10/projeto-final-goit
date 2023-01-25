@@ -31,13 +31,15 @@ pizzaria()
 menu()
 n1 = input('Escolha uma opção: ')
 os.system('cls')
-
-
+cont01 = 0
+cont02 = 0
 if (n1 == '1'):
-    pizzaria()
 
     while True:
-        inputNomeUsuario = input('QUAL E SEU LONGIN--> ')
+        os.system('cls')
+        pizzaria()
+
+        inputNomeUsuario = input('QUAL E SEU LOGIN--> ')
 
         inputSenha = input('QUAL É SUA SENHA --> ')
 
@@ -55,8 +57,12 @@ if (n1 == '1'):
         usuario = Usuario(0, "", "", "")
 
         if queryResult == None:
-            print("Usuario nao encontrado")
-            break
+            erroUsuario = input("** Usuario incorreto **  [enter]")
+            cont01 = cont01 + 1
+            if cont01 == 3:
+                break
+
+            # repetir = input('você quer tentar de novo (s)sim ou (n)não ')
 
         else:
             usuario = Usuario(
@@ -131,8 +137,14 @@ if (n1 == '1'):
             cnx.close()
 
         else:
-            print("senha incorreta")
-            break
+            erroSenha = input("** Senha incorreta **  [enter]")
+            print('--------------------------------------------')
+            print('')
+            cont02 = cont02 + 1
+            nomeroErros = input(
+                f'Maximo de erro 3X usuario {cont01}X é senha {cont02}X [enter]')
+            if cont02 == 3:
+                break
 
 
 if (n1 == '2'):
