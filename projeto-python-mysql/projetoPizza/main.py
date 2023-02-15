@@ -174,7 +174,7 @@ if (escolhaMenu == '2'):
     pizzaria()
 
     conexao = mysql.connector.connect(
-        host="localhost",          
+        host="localhost",
         user="root",
         password="",
         database="pizzariagoit1"
