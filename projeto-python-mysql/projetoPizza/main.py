@@ -1,4 +1,4 @@
-import mysql.connector           # importando o banco de dados
+import mysql.connector          # importando o banco de dados
 from usuario import Usuario
 from pizza import Pizza          # importando class da linha 2 até 5
 from bebidas import Bebidas
@@ -6,6 +6,7 @@ from vendas import Vendas
 from datetime import date        # importando data
 import getpass                   # gestpass para esconder senha
 import os                        # para limpar tela
+
 
 today = date.today()
 print("Today's date:", today)          # estou chamando é mostrando a data
@@ -37,7 +38,7 @@ def menu():
 pizzaria()
 menu()
 escolhaMenu = input('Escolha uma opção: ')  # escolher uma opção do menur
-os.system('cls')               # chamando limpa tela
+os.system('cls')
 cont01 = 0   # variavel para usar como contador
 cont02 = 0
 if (escolhaMenu == '1'):
@@ -230,3 +231,4 @@ else:
     os.system('cls')
     pizzaria()
     print('## FIM DO PROGRAMA ##')
+
